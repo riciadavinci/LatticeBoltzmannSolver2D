@@ -1,92 +1,120 @@
-# SiWiR2-ss22
+# Lattice Boltzmann Solver - 2D
 
+The goal of this project was to implement a Lattice Boltzmann Solver for a given obstacle in a channel. The problem is solved in 2D domain.
 
+This project was part of the course "Simulation and Scientific Computing 2 (SiWiR2)" during my masters. The code in the initial version is serial code written in C++17 and compiled on Linux OS using GCC compiler toolchain.
 
-## Getting started
+There are following possibilities for improving performance (reducing runtime):
+1. Parallelize on CPU with _**OpenMP**_ &nbsp; [[🔗](https://www.openmp.org)]
+2. Parallelize on GPU with _**Nvidia CUDA/C++**_ &nbsp; [[🔗](https://docs.nvidia.com/cuda/)]
+3. Use _**Expression Templates**_ &nbsp; [[🔗](https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=ca2f8a9b7407de039957a358f995265ec8b769a9)]
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+<br>
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+### Team Members for the original project:
+1. Nikhil VC &nbsp; [[🔗LinkedIn](https://www.linkedin.com/in/nikhil-vagga-5634b8111/)]
+2. Nagesh AC &nbsp; [[🔗LinkedIn](https://www.linkedin.com/in/nagesh-a-c/)] &nbsp; [[🔗Github](https://github.com/NageshAC)]
+3. Rishikesh (myself) &nbsp; [[🔗LinkedIn](https://www.linkedin.com/in/rishikesh-nerurkar/)] &nbsp; [[🔗Github](https://github.com/riciadavinci)]
 
-## Add your files
+<br>
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+### Requirements:
+- C++ Compiler: &nbsp; _GCC_ / _Microsoft Visual C++_
+- Build system: &nbsp; _CMake_
+- Visualization tool: &nbsp; _Paraview_ to the results (_.vtk_ files)
 
+<br>
+
+### Download, Installation & Execution Steps:
+1. Clone the repository
+
+```bash
+git clone "https://github.com/riciadavinci/LatticeBoltzmannSolver2D"
 ```
-cd existing_repo
-git remote add origin https://gitlab.cs.fau.de/ul01emaf/siwir2-ss22.git
-git branch -M main
-git push -uf origin main
+
+2. Move into the cloned repository
+
+```bash
+cd LatticeBoltzmannSolver2D
 ```
 
-## Integrate with your tools
+3. Create build directory and move into it
 
-- [ ] [Set up project integrations](https://gitlab.cs.fau.de/ul01emaf/siwir2-ss22/-/settings/integrations)
+```bash
+mkdir build && cd build
+```
 
-## Collaborate with your team
+4. Configure & generate files (pre-build step) for building - Makefiles, *.vcxproj, etc.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+```bash
+cmake ..
+```
 
-## Test and Deploy
+5. Perform the build step
 
-Use the built-in continuous integration in GitLab.
+```bash
+cmake --build .
+```
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+6. Run the executable (see usage section below)
+- The executable is called `lbm`
+- On linux, the executable would be generated under `build/LatticeBoltzmannSolver` directory
+- on Windows, the executable would be generated in the build directory according to the project settings:
+    - `build/Debug/lbm.exe`
+    - `build/Release/lbm.exe`
+    - any other settings that the user may have setup
 
-***
+<br>
 
-# Editing this README
+#### Usage on Linux:
+```bash
+./lbm <PARAMETERS>.dat
+```
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+#### Usage on Windows:
+```bash
+lbm.exe <PARAMETERS>.dat
+```
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+Here: `<PARAMETERS>.dat`: &nbsp; **Parameters file** - Please provide either the full path or proper relative path to these files.
 
-## Name
-Choose a self-explaining name for your project.
+#### Usage examples (linux):
+1. `./lbm ../../files/params_Re40.dat` : corresponds to _cylinder geometry_ and **Reynolds number (Re) = 40**
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+2. `./lbm ../../files/params_Re500.dat` : corresponds to _cylinder geometry_ and **Reynolds number (Re) = 500**
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+3. `./lbm ../../files/params_Re100_wing.dat` : corresponds to _wing geometry_ and **Reynolds number (Re) = 100**
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+<br>
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+### Results:
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+1. _**Cylinder** geometry and **Re = 40**_
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+![Cylinder geometry Re40](assets/results/Re40_Cylinder_Geometry.gif)
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+2. _**Cylinder** geometry and **Re = 500**_
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+<!-- ![Cylinder geometry Re500](assets/results/Re500_Cylinder_Geometry.gif) -->
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+3. _**Wing** geometry and **Re = 100**_
 
-## License
-For open source projects, say how it is licensed.
+<!-- ![Wing geometry Re100](assets/results/Re100_Wing_Geometry.gif) -->
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+
+#### Note:
+If you want to include a similar PARAMETERS.dat file like Re100_wing.dat, where the geometry is 
+passed via the file, make sure that the geometry file <GEOMETRY>.pgm is located in the "files" 
+directory within the project and also the geometry parameter should just be the filename: `<PARAMETERS>.dat` (see last last line of the following text snippet).
+
+`<PARAMETERS>.dat` contents:
+```text
+timesteps 50000
+Re 100
+.
+.
+.
+geometry <some_geometry>.pgm
+```
