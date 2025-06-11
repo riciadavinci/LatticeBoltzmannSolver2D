@@ -110,7 +110,7 @@ Here: `<PARAMETERS>.dat`: &nbsp; **Parameters file** - Please provide either the
 <table>
     <thead>
         <tr>
-            <th rowspan=2>Sr. no.</th>
+            <th rowspan=2>No.</th>
             <th rowspan=2>Test Case</th>
             <th rowspan=2>No. of Timesteps</th>
             <th colspan=3 align="center">Runtime (seconds)</th>
@@ -125,26 +125,26 @@ Here: `<PARAMETERS>.dat`: &nbsp; **Parameters file** - Please provide either the
         <tr>
             <td>1.</td>
             <td>Re40 Cylinder Geometry</td>
-            <th>50,000</th>
-            <td>1339.44 s ≈ 22.32 min </td>
-            <td> - </td>
-            <td> - </td>
+            <td align="center">50,000</td>
+            <td align="center">1339.44 s ≈ 22.32 min </td>
+            <td align="center"> - </td>
+            <td align="center"> - </td>
         </tr>
         <tr>
             <td>2.</td>
             <td>Re500 Cylinder Geometry</td>
-            <td>150,000</td>
-            <td>4165.08 s ≈ 69.42 min</td>
-            <td> - </td>
-            <td> - </td>
+            <td align="center">150,000</td>
+            <td align="center">4165.08 s ≈ 69.42 min</td>
+            <td align="center"> - </td>
+            <td align="center"> - </td>
         </tr>
         <tr>
             <td>3.</td>
             <td>Re100 Wing Geometry</td>
-            <td>50,000</td>
-            <td>763.676 s ≈ 12.73 min</td>
-            <td> - </td>
-            <td> - </td>
+            <td align="center">50,000</td>
+            <td align="center">763.676 s ≈ 12.73 min</td>
+            <td align="center"> - </td>
+            <td align="center"> - </td>
         </tr>
     </tdata>
 </table>
