@@ -87,7 +87,7 @@ Here: `<PARAMETERS>.dat`: &nbsp; **Parameters file** - Please provide either the
 
 <br>
 
-### Results:
+### Results - Velocity Plots:
 
 1. _**Cylinder** geometry and **Re = 40**_
 
@@ -96,13 +96,60 @@ Here: `<PARAMETERS>.dat`: &nbsp; **Parameters file** - Please provide either the
 
 2. _**Cylinder** geometry and **Re = 500**_
 
-<!-- ![Cylinder geometry Re500](assets/results/Re500_Cylinder_Geometry.gif) -->
+![Cylinder geometry Re500](assets/results/Re500_Cylinder_Geometry.gif)
 
 
 3. _**Wing** geometry and **Re = 100**_
 
-<!-- ![Wing geometry Re100](assets/results/Re100_Wing_Geometry.gif) -->
+![Wing geometry Re100](assets/results/Re100_Wing_Geometry.gif)
 
+<br>
+
+### Runtime:
+
+<table>
+    <thead>
+        <tr>
+            <th rowspan=2>Sr. no.</th>
+            <th rowspan=2>Test Case</th>
+            <th rowspan=2>No. of Timesteps</th>
+            <th colspan=3 align="center">Runtime (seconds)</th>
+        </tr>
+        <tr>
+            <th>CPU Serial Code</th>
+            <th>OpenMP: CPU Parallel</th>
+            <th>CUDA/C++: GPU Parallel</th>
+        </tr>
+    </thead>
+    <tdata>
+        <tr>
+            <td>1.</td>
+            <td>Re40 Cylinder Geometry</td>
+            <th>50,000</th>
+            <td>1339.44 s ≈ 22.32 min </td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+        <tr>
+            <td>2.</td>
+            <td>Re500 Cylinder Geometry</td>
+            <td>150,000</td>
+            <td>4165.08 s ≈ 69.42 min</td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+        <tr>
+            <td>3.</td>
+            <td>Re100 Wing Geometry</td>
+            <td>50,000</td>
+            <td>763.676 s ≈ 12.73 min</td>
+            <td> - </td>
+            <td> - </td>
+        </tr>
+    </tdata>
+</table>
+
+<br>
 
 #### Note:
 If you want to include a similar PARAMETERS.dat file like Re100_wing.dat, where the geometry is 
