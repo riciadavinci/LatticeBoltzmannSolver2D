@@ -7,6 +7,7 @@
 #include "Globals.h"
 #include "Grid.h"
 #include "ex04_funcs.h"
+#include "Timer.h"
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
@@ -24,6 +25,9 @@ int main(int argc, char* argv[]) {
     uint vtk_step = fr.getParam<uint>("vtk_step");
     double uin = fr.getParam<double>("uin");
     uint Re = fr.getParam<uint>("Re");
+
+    auto lbm_timer = Timer("Lattice Boltzmann 2D Timer");
+    lbm_timer.start();
 
     auto box_and_flags_grid = lbm::get_bounding_box_and_flags_grid(fr);
     auto box = box_and_flags_grid.first;
@@ -83,5 +87,8 @@ int main(int argc, char* argv[]) {
         }
     }
     std::cout << "Done!\n";
+    lbm_timer.stop();
+    std::cout << "Total time elapsed: " << lbm_timer.elapsed_seconds() << " (s)\n";
+    lbm_timer.reset();
     return 0;
 }
