@@ -50,4 +50,4 @@ void swap(Grid<Type, CellSize>& grid1, Grid<Type, CellSize>& grid2);
 
 }
 
-#include "../src/Grid.cpp"
+#include "Grid.cpp"

@@ -1,4 +1,4 @@
-#include "../include/BoundingBox.h"
+#include "BoundingBox.h"
 
 namespace lbm
 {
@@ -34,7 +34,7 @@ BoundingBox BoundingBox::from_flags_grid(const Grid<uint, 1>& grid) {
         for (uint i = xbegin; i < xsize; ++i) {
             if (grid(i, j, 0) == NO_SLIP) {
                 if (upper_bound == 0) {upper_bound = j;}
-                if ((left_bound == 0) or (i < left_bound)) {left_bound = i;}
+                if ((left_bound == 0) || (i < left_bound)) {left_bound = i;}
                 if (j > lower_bound) {lower_bound = j;}
                 if (i > right_bound) {right_bound = i;}
             }

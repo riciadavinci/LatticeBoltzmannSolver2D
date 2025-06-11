@@ -1,4 +1,4 @@
-#include "../include/Grid.h"
+#include "Grid.h"
 
 namespace lbm
 {

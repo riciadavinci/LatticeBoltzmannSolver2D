@@ -4,9 +4,9 @@
 #include <memory>
 
 
-#include "../include/Globals.h"
-#include "../include/Grid.h"
-#include "../include/ex04_funcs.h"
+#include "Globals.h"
+#include "Grid.h"
+#include "ex04_funcs.h"
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {

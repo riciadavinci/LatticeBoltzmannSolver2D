@@ -49,4 +49,4 @@ std::pair<BoundingBox, Grid<uint, 1>> get_bounding_box_and_flags_grid(FileReader
 
 }
 
-#include "../src/ex04_funcs.cpp"
+#include "ex04_funcs.cpp"

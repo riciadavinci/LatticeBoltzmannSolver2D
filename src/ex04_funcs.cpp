@@ -1,4 +1,4 @@
-#include "../include/ex04_funcs.h"
+#include "ex04_funcs.h"
 
 namespace lbm
 {

@@ -17,4 +17,4 @@ public:
    T getParam(const std::string& key);
 };
 
-#include "../src/FileReader.cpp"
+#include "FileReader.cpp"
