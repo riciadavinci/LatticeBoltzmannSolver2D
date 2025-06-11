@@ -10,6 +10,7 @@ set(SOURCES_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
 set(INCLUDES_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
 
 set(SOURCES
+    "${SOURCES_DIR}/Timer.cpp"
     "${SOURCES_DIR}/BoundingBox.cpp"
     "${SOURCES_DIR}/main.cpp"
 )
