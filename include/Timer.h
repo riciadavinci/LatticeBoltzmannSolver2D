@@ -12,12 +12,12 @@ public:
     void start();
     void stop();
     void reset();
-    std::chrono::seconds elapsed_seconds();
+    double elapsed_seconds();
 
 private:
     std::string m_name;
-    std::chrono::system_clock::time_point m_start_time;
-    std::chrono::system_clock::time_point m_stop_time;
+    std::chrono::steady_clock::time_point m_start_time;
+    std::chrono::steady_clock::time_point m_stop_time;
     bool m_is_running {false};
     bool m_is_reset {true};
 };
