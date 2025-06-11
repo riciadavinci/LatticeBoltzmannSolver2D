@@ -383,11 +383,17 @@ void apply_circle_obstacle_to_flags(Grid<uint, 1>& Flags, const uint spherex, co
 std::pair<BoundingBox, Grid<uint, 1>> get_bounding_box_and_flags_grid(FileReader fr) {
     auto geometry = fr.getParam<std::string>("geometry");
     if (geometry != "") {
-        // Arbitrary geometry!
-        const std::string ip_geom_file = "files/" + geometry;        
-        auto Flags = Grid<uint, 1>::from_pgm_file(ip_geom_file);
-        auto box = BoundingBox::from_flags_grid(Flags);
-        return std::make_pair(box, Flags);
+        std::vector<std::string> plausible_filepaths = {"files/", "../files/", "../../files/"};
+        for (const auto filepath: plausible_filepaths) {
+            // Arbitrary geometry!
+            const std::string ip_geom_file = filepath + geometry;
+            if (file_exists(ip_geom_file)) {
+                std::cout << ".pgm file found at: " << ip_geom_file << "\n";
+                auto Flags = Grid<uint, 1>::from_pgm_file(ip_geom_file);
+                auto box = BoundingBox::from_flags_grid(Flags);
+                return std::make_pair(box, Flags);
+            }
+        }
     }
     // Circle obstacle:
     auto sizex = fr.getParam<uint>("sizex")+2;
@@ -399,6 +405,10 @@ std::pair<BoundingBox, Grid<uint, 1>> get_bounding_box_and_flags_grid(FileReader
     auto Flags = Grid<uint, 1>(sizex, sizey);
     apply_circle_obstacle_to_flags(Flags, spherex, spherey, radius);
     return std::make_pair(box, Flags);
+}
+
+bool file_exists(const std::string& filename) {
+    return std::filesystem::exists(filename);
 }
 
 }

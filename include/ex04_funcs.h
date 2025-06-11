@@ -15,6 +15,8 @@
 #include "FileReader.h"
 #include <string>
 #include <utility>
+#include <filesystem>
+#include <vector>
 
 // class FileReader;
 
@@ -46,6 +48,7 @@ void apply_circle_obstacle_to_flags(Grid<uint, 1>& Flags, const uint spherex, co
 
 std::pair<BoundingBox, Grid<uint, 1>> get_bounding_box_and_flags_grid(FileReader fr);
 
+bool file_exists(const std::string& filename);
 
 }
 
